@@ -1,0 +1,24 @@
+#ifndef PICOCARD_RESUME_INFO_H_
+#define PICOCARD_RESUME_INFO_H_
+// First resume person info
+const char* kResumeName_1 = "First Last 1";
+const char* kResumeHeadline_1 = "Headline 1";
+const char* kResumePhone_1 = "(555) 555-1111";
+const char* kResumeEmail1_1 = "emailBase1";
+const char* kResumeEmail2_1 = "@email.1.tld";
+const char* kResumeRole1_1 = "Starring example";
+const char* kResumeRole2_1 = "for a blank person";
+const char* kResumeQRLabel_1 = "Rick";
+const char* kResumeQRURL_1 = "https://youtu.be/dQw4w9WgXcQ";
+
+// Second resume person info
+const char* kResumeName_2 = "First Last 1";
+const char* kResumeHeadline_2 = "Headline 1";
+const char* kResumePhone_2 = "(555) 555-2222";
+const char* kResumeEmail1_2 = "emailBase1";
+const char* kResumeEmail2_2 = "@email.1.tld";
+const char* kResumeRole1_2 = "Starring example";
+const char* kResumeRole2_2 = "for a blank person";
+const char* kResumeQRLabel_2 = "Toto";
+const char* kResumeQRURL_2 = "https://youtu.be/FTQbiNvZqaY";
+#endif // PICOCARD_RESUME_INFO_H_
