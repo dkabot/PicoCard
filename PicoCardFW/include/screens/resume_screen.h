@@ -1,7 +1,7 @@
 #ifndef PICOCARD_SCREENS_RESUME_SCREEN_H_
 #define PICOCARD_SCREENS_RESUME_SCREEN_H_
 #include "screens/screen.h"
-#include "images/qr_v4_image.h"
+#include "screens/qr_v4_screen.h"
 
 namespace picocard {
 class ResumeScreen : public Screen {
@@ -28,7 +28,8 @@ class ResumeScreen : public Screen {
     const char* role1_;
     const char* role2_;
     const char* qr_label_;
-    const QRV4Image qr_image_;
+    // QR Screen exists standalone, but we can still chain-call it here
+    QRV4Screen qr_screen_;
 
     bool draw_info_;
 

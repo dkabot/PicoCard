@@ -15,6 +15,13 @@ const uint16_t kHintTriangleHalfLength = 4; // Total length this * 2 + 1
 const uint16_t kSafeDrawStartX = kHintTriangleHeight + 1; // 2px gap
 const uint16_t kSafeDrawStartY = kSafeDrawStartX; // Only x size matters
 
+// Was originally a hardcoded 7px in resume_screen.h,
+// but is now more generally useful for positioning top/bottom labels
+const uint8_t kLabelPosY = kSafeDrawStartY + 1;
+
+// We only have QR V4 so far, but you could in theory add others
+const uint8_t kQRV4ScaleFactor = 5;
+
 // Helpers, midpoint X/Y of the screen, slightly shortens below functions
 uint16_t displayMidX(Screen_EPD& display);
 uint16_t displayMidY(Screen_EPD& display);

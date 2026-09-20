@@ -1,5 +1,7 @@
 #include "screens/resume_screen.h"
 
+#include <Arduino.h>
+
 #include <cstdint>
 
 #include "ui_helper.h"
@@ -9,12 +11,9 @@ namespace picocard {
 const uint8_t kResumeOffsetLarge = 24;
 const uint8_t kResumeOffsetMedium = 12;
 const uint8_t kResumeOffsetSmall = 4;
-// Was originally a hardcoded 7px, but is now relative to kSafeDrawStart
-const uint8_t kLabelPosY = kSafeDrawStartY + 1;
+
 // Was originally a hardcoded 2px, but is now relative to def of kSafeDrawStart
 const uint8_t kResumeQROffset = kLabelPosY - kHintTriangleHeight;
-const uint8_t kResumeQRScaleFactor = 5;
-
 
 ResumeScreen::ResumeScreen(const char* name, const char* headline,
   const char* phone, const char* email1, const char* email2, const char* role1,
@@ -27,7 +26,7 @@ ResumeScreen::ResumeScreen(const char* name, const char* headline,
       role1_(role1),
       role2_(role2),
       qr_label_(qr_label),
-      qr_image_(QRV4Image(qr_url)),
+      qr_screen_(QRV4Screen(qr_url, name)),
       draw_info_(true) {}
 
 ScreenState ResumeScreen::onSwitchedTo(Screen_EPD& display) {
@@ -74,7 +73,7 @@ ScreenState ResumeScreen::drawInfo(Screen_EPD& display) {
    displayMaxY(display) - kLabelPosY - display.characterSizeY(), qr_label_);
 
   // Draw name
-  uint16_t y_pos = kSafeDrawStartY; //TODO figure out position constants?
+  uint16_t y_pos = kSafeDrawStartY;
   display.selectFont(2); // 16px
   display.gText(kSafeDrawStartX, y_pos, name_); // Text defaults to black on white bg
 
@@ -103,27 +102,13 @@ ScreenState ResumeScreen::drawInfo(Screen_EPD& display) {
 }
 
 ScreenState ResumeScreen::drawQR(Screen_EPD& display) {
-  display.clear(); // Always clear the display before starting
-  display.selectFont(1); // 12px; bigger than QR label above but more legible
-  display.setFontSolid(false); // Transparent-background text
-
-  // Draw hints
-  drawUpHint(display);
-  drawLeftHint(display);
-  drawRightHint(display);
-
-  // Draw hint label
-  display.gText(displayMidX(display) - stringHalfWidth(display, name_),
-    kLabelPosY, name_);
-
-  // Draw QR code
-  // Centered X
-  uint16_t x_pos = displayMidX(display) - qr_image_.get_size_x()
-    * kResumeQRScaleFactor / 2;
-  // Non-centered Y, but instead below the text
-  uint16_t y_pos = kLabelPosY + display.characterSizeY() + kResumeQROffset;
-  drawImage(display, x_pos, y_pos, qr_image_, kResumeQRScaleFactor);
+  // Draw the QR screen as it would be if standalone
+  ScreenState new_screen_state = qr_screen_.onSwitchedTo(display);
   
-  return ScreenState::FLUSH; // Always end by indicating a display refresh
+  // Draw up hint for our use case here
+  drawUpHint(display);
+
+  // We're drawing a hint, so make sure the returned result is at least FLUSH
+  return max(new_screen_state, ScreenState::FLUSH);
 }
 } // namespace picocard
