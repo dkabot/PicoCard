@@ -1,8 +1,8 @@
 #include "screens/screen_helper.h"
 
 #include "resume_info.h"
+#include "screens/qr_v4_screen.h"
 #include "screens/resume_screen.h"
-
 
 namespace picocard {
 int8_t current_screen = 0;
@@ -17,6 +17,8 @@ void setupScreens() {
   screens[1] = new ResumeScreen(kResumeName_2, kResumeHeadline_2,
   kResumePhone_2, kResumeEmail1_2, kResumeEmail2_2, kResumeRole1_2,
   kResumeRole2_2, kResumeQRLabel_2, kResumeQRURL_2);
+
+  screens[2] = new QRV4Screen("https://github.com/dkabot/PicoCard", "Check out the code!");
 
   // More screens forthcoming...?
 }

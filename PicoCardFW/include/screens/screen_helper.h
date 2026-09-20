@@ -8,7 +8,7 @@
 
 namespace picocard {
 // Screen tracking constants and variables
-const uint8_t kScreenCount = 2;
+const uint8_t kScreenCount = 3;
 extern int8_t current_screen; // Signed so we can see if it underflows
 extern picocard::Screen* screens[kScreenCount];
 
