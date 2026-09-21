@@ -12,9 +12,6 @@ const uint8_t kResumeOffsetLarge = 24;
 const uint8_t kResumeOffsetMedium = 12;
 const uint8_t kResumeOffsetSmall = 4;
 
-// Was originally a hardcoded 2px, but is now relative to def of kSafeDrawStart
-const uint8_t kResumeQROffset = kLabelPosY - kHintTriangleHeight;
-
 ResumeScreen::ResumeScreen(const char* name, const char* headline,
   const char* phone, const char* email1, const char* email2, const char* role1,
   const char* role2, const char* qr_label, const char* qr_url)
