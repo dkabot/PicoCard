@@ -13,7 +13,7 @@ ImageScreen::ImageScreen(const Image& image, const uint8_t scale_factor, const c
 
 ScreenState ImageScreen::onSwitchedTo(Screen_EPD& display) {
   display.clear(); // Always clear the display before starting
-  display.selectFont(1); // 12px; bigger than QR label above but more legible
+  display.selectFont(1); // 12px, for legibility
   display.setFontSolid(false); // Transparent-background text
 
   // Draw hints
@@ -26,7 +26,7 @@ ScreenState ImageScreen::onSwitchedTo(Screen_EPD& display) {
       kLabelPosY, label_);
   }
 
-  // Calculate QR code position
+  // Calculate Image position
   // Centered X
   uint16_t x_pos = displayMidX(display) - image_.get_size_x()
     * scale_factor_ / 2;

@@ -99,11 +99,11 @@ void drawImage(Screen_EPD& display, const uint16_t x_pos, const uint16_t y_pos,
   display.setPenSolid(true); // Can't check this externally...
 
   for (uint16_t current_pixel = 0;
-     current_pixel < image.get_size_x() * image.get_size_y(); current_pixel++)
-     {
+    current_pixel < image.get_size_x() * image.get_size_y(); current_pixel++)
+    {
     // The (un-scaled) pixel we're addressing
     uint8_t x_pixel = current_pixel % image.get_size_x();
-    uint8_t y_pixel = current_pixel / image.get_size_y();
+    uint8_t y_pixel = current_pixel / image.get_size_x();
     
     // The scaled start/end positions for said pixel
     uint16_t start_x_pos = x_pos + scale_factor * x_pixel;
