@@ -5,20 +5,18 @@
 #include <Arduino.h>
 #include "PDLS_Basic.h"
 
-#include "qrcodegen.h"
-
 namespace picocard {
 // V4 QR codes get buffered and stored as 138 byte arrays
 const uint8_t kQRV4Size = qrcodegen_BUFFER_LEN_FOR_VERSION(4);
 
-QRV4Image::QRV4Image(const char* url)
+QRV4Image::QRV4Image(const char* url, qrcodegen_Ecc ecc_level)
   // While QR codes are generally black data on a white background,
   // the background color of the image is black, to make errors obvious
   : Image(kQRV4Bound, kQRV4Bound), image_{ myColours.black } {
   uint8_t temp_buffer[kQRV4Size] = { 0 };
   uint8_t qr_code[kQRV4Size] = { 0 };
   bool success = qrcodegen_encodeText(url, temp_buffer, qr_code,
-    qrcodegen_Ecc_HIGH, 4, 4, qrcodegen_Mask_AUTO, false);
+    ecc_level, 4, 4, qrcodegen_Mask_AUTO, false);
   if(success) {
     // This should always be 33 pixels, but never hurts to make sure...
     uint8_t xy_bound = min(kQRV4Bound, qrcodegen_getSize(qr_code));

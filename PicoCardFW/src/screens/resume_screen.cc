@@ -14,7 +14,8 @@ const uint8_t kResumeOffsetSmall = 4;
 
 ResumeScreen::ResumeScreen(const char* name, const char* headline,
   const char* phone, const char* email1, const char* email2, const char* role1,
-  const char* role2, const char* qr_label, const char* qr_url)
+  const char* role2, const char* qr_label, const char* qr_url,
+  qrcodegen_Ecc ecc_level)
     : name_(name),
       headline_(headline),
       phone_(phone),
@@ -23,7 +24,7 @@ ResumeScreen::ResumeScreen(const char* name, const char* headline,
       role1_(role1),
       role2_(role2),
       qr_label_(qr_label),
-      qr_screen_(QRV4Screen(qr_url, name)),
+      qr_screen_(QRV4Screen(qr_url, name, ecc_level)),
       draw_info_(true) {}
 
 ScreenState ResumeScreen::onSwitchedTo(Screen_EPD& display) {

@@ -3,7 +3,8 @@
 namespace picocard {
 // We only need this one constructor
 QRV4Screen::QRV4Screen(const char* url, const char* label,
-  const uint8_t scale_factor)
-  : ImageScreen(qr_image_, scale_factor, label), qr_image_(QRV4Image(url)) {}
+  qrcodegen_Ecc ecc_level, const uint8_t scale_factor)
+  : ImageScreen(qr_image_, scale_factor, label),
+    qr_image_(QRV4Image(url, ecc_level)) {}
 
 } // namespace picocard

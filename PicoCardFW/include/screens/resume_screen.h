@@ -1,5 +1,7 @@
 #ifndef PICOCARD_SCREENS_RESUME_SCREEN_H_
 #define PICOCARD_SCREENS_RESUME_SCREEN_H_
+#include "qrcodegen.h"
+
 #include "screens/screen.h"
 #include "screens/qr_v4_screen.h"
 
@@ -8,7 +10,8 @@ class ResumeScreen : public Screen {
   public:
     ResumeScreen(const char* name, const char* headline, const char* phone,
       const char* email1, const char* email2, const char* desc1,
-      const char* desc2, const char* qr_label, const char* qr_url);
+      const char* desc2, const char* qr_label, const char* qr_url,
+      qrcodegen_Ecc ecc_level = qrcodegen_Ecc_HIGH);
 
     ScreenState onSwitchedTo(Screen_EPD& display) override;
     ScreenState onUpPressed(Screen_EPD& display) override;

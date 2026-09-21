@@ -12,11 +12,11 @@ void setupScreens() {
   // First two screens are the contact info of the creators
   screens[0] = new ResumeScreen(kResumeName_1, kResumeHeadline_1,
   kResumePhone_1, kResumeEmail1_1, kResumeEmail2_1, kResumeRole1_1,
-  kResumeRole2_1, kResumeQRLabel_1, kResumeQRURL_1);
+  kResumeRole2_1, kResumeQRLabel_1, kResumeQRURL_1, kResumeQRECC_1);
 
   screens[1] = new ResumeScreen(kResumeName_2, kResumeHeadline_2,
   kResumePhone_2, kResumeEmail1_2, kResumeEmail2_2, kResumeRole1_2,
-  kResumeRole2_2, kResumeQRLabel_2, kResumeQRURL_2);
+  kResumeRole2_2, kResumeQRLabel_2, kResumeQRURL_2, kResumeQRECC_2);
 
   screens[2] = new QRV4Screen("https://github.com/dkabot/PicoCard", "Check out the code!");
 

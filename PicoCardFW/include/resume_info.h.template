@@ -1,5 +1,7 @@
 #ifndef PICOCARD_RESUME_INFO_H_
 #define PICOCARD_RESUME_INFO_H_
+#include "qrcodegen.h"
+
 // First resume person info
 const char* kResumeName_1 = "First Last 1";
 const char* kResumeHeadline_1 = "Headline 1";
@@ -10,6 +12,7 @@ const char* kResumeRole1_1 = "Starring example";
 const char* kResumeRole2_1 = "for a blank person";
 const char* kResumeQRLabel_1 = "Rick";
 const char* kResumeQRURL_1 = "https://youtu.be/dQw4w9WgXcQ";
+qrcodegen_Ecc kResumeQRECC_1 = qrcodegen_Ecc_HIGH; // Enum, so no const needed
 
 // Second resume person info
 const char* kResumeName_2 = "First Last 1";
@@ -21,4 +24,5 @@ const char* kResumeRole1_2 = "Starring example";
 const char* kResumeRole2_2 = "for a blank person";
 const char* kResumeQRLabel_2 = "Toto";
 const char* kResumeQRURL_2 = "https://youtu.be/FTQbiNvZqaY";
+qrcodegen_Ecc kResumeQRECC_1 = qrcodegen_Ecc_HIGH; // Best kept HIGH if able
 #endif // PICOCARD_RESUME_INFO_H_
