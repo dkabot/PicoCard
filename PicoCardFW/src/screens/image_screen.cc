@@ -5,7 +5,7 @@
 #include "ui_helper.h"
 
 namespace picocard {
-// Was originally a hardcoded 2px, but is now relative kLabelPosY
+// Was originally a hardcoded 2px, but is now relative to kLabelPosY
 const uint8_t kImageOffset = kLabelPosY - kHintTriangleHeight;
 
 ImageScreen::ImageScreen(const Image& image, const uint8_t scale_factor, const char* label)

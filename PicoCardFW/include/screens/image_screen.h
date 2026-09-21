@@ -13,11 +13,11 @@ class ImageScreen : public Screen {
     // Doesn't need special button behavior whatsoever
 
   private:
-    const char* label_;
-    const uint8_t scale_factor_;
     // A reference isn't great here, but an Image can't be instantiated;
     // I think it's best to leave this, and extend ImageScreen where possible
     const Image& image_;
+    const uint8_t scale_factor_;
+    const char* label_;
 };
 } // namespace picocard
 #endif // PICOCARD_SCREENS_IMAGE_SCREEN_H_
